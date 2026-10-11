@@ -1,13 +1,13 @@
 {
   "name": "MyHealth OS — Demo",
   "short_name": "MyHealth OS",
-  "description": "Demo con información 100% sintética. No es un dispositivo médico.",
+  "description": "Demo interactiva con datos sintéticos. Sin IA ni integración sanitaria real.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f6f7f3",
   "theme_color": "#f6f7f3",
   "icons": [
-    {"src":"assets/icon-192.png", "sizes":"192x192", "type":"image/png", "purpose":"any maskable"},
-    {"src":"assets/icon-512.png", "sizes":"512x512", "type":"image/png", "purpose":"any maskable"}
+    {"src":"icon-192.png", "sizes":"192x192", "type":"image/png", "purpose":"any maskable"},
+    {"src":"icon-512.png", "sizes":"512x512", "type":"image/png", "purpose":"any maskable"}
   ]
 }
