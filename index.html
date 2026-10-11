@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <meta name="theme-color" content="#f6f7f3"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-title" content="MyHealth OS"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+  <meta name="referrer" content="no-referrer"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"/>
+  <meta name="description" content="MyHealth OS, prototipo interactivo de salud personal con datos sintéticos."/>
+  <meta name="color-scheme" content="light dark"/>
+  <title>MyHealth OS — Demo funcional</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"/>
+  <link rel="apple-touch-icon" href="assets/icon-192.png"/>
+  <link rel="manifest" href="manifest.webmanifest"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <aside class="sidebar" aria-label="Navegación principal">
+      <div class="brand"><div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></div><div class="brand-wordmark">myhealth<span class="brand-os">/os</span><small>PERSONAL HEALTH SYSTEM</small></div></div>
+      <div class="workspace-label">ESPACIO PERSONAL</div>
+      <nav id="side-nav" class="side-nav" aria-label="Secciones"></nav>
+      <div class="sidebar-bottom">
+        <div class="demo-note"><span class="live-dot"></span><div><b>Entorno de demostración</b><small>Sin datos de salud reales</small></div></div>
+        <button type="button" class="sidebar-config" data-action="settings"><span aria-hidden="true">⚙</span> Preferencias</button>
+        <div class="sidebar-footer">MYHEALTH OS · ALPHA 0.1</div>
+      </div>
+    </aside>
+    <div class="main-area">
+      <header class="topbar"><div class="top-left"><span class="top-kicker">TU ESPACIO DE SALUD</span><span class="top-split">/</span><span id="breadcrumb">Hoy</span></div><div class="top-actions"><span class="synthetic-tag"><span class="live-dot"></span> DATOS DE EJEMPLO</span><button type="button" class="icon-button" title="Exportar datos de demostración" aria-label="Exportar datos" data-action="export">⇩</button><button type="button" class="avatar-button" data-action="settings" aria-label="Preferencias">MH</button></div></header>
+      <main id="main-content" tabindex="-1" aria-live="polite"></main>
+    </div>
+    <nav id="bottom-nav" class="bottom-nav" aria-label="Navegación móvil"></nav>
+    <div class="modal-layer" id="modal-layer" hidden></div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </div>
+</body>
+</html>
