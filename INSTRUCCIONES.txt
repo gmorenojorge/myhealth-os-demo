@@ -1,0 +1,42 @@
+MYHEALTH OS 0.4.3 — Experiencia de correspondencia USDA
+
+CAMBIO: UNA SOLA APLICACION PUBLICA; NO SE MODIFICA CLOUDFLARE.
+
+1. En el iPhone, descomprime este ZIP desde Archivos.
+2. En GitHub abre https://github.com/gmorenojorge/myhealth-os-demo/upload/main
+3. Sube solamente el archivo nutrition-ai.js a la raiz de la rama main,
+   reemplazando el nutrition-ai.js anterior (no subas el ZIP).
+4. Confirma Commit changes y espera que GitHub Pages complete su publicacion.
+5. Abre https://gmorenojorge.github.io/myhealth-os-demo/ en Safari o Chrome.
+6. En Nutricion -> Analizar comida con IA, haz una foto de prueba y pulsa Analizar.
+   Ahora cada ingrediente frecuente deberia mostrar una sola referencia USDA
+   sugerida y un boton 'Cambiar referencia'. Los casos ambiguos siguen
+   necesitando seleccion explicita. Comprueba ingredientes, gramos y preparacion
+   antes de Calcular nutrientes y Confirmar.
+
+QUE CAMBIA
+- Elige de forma automatica una referencia USDA en alimentos evidentes
+  y sin mezclas o elaboraciones aparentes (ejemplo: manzana, naranja, ciruela).
+- Oculta las alternativas; boton Cambiar referencia para mostrar primero 4,
+  seguido de Ver mas. No son ingredientes adicionales.
+- Conserva el nombre del alimento en espanol y la edicion en campo libre.
+- Traduce nombres frecuentes al ingles para consultar USDA.
+- Habilita el calculo solo cuando todos los alimentos incluidos tienen
+  identificador USDA valido y gramos positivos.
+- Si no existe una correspondencia suficientemente fiable, la deja pendiente
+  de seleccion: no inventa equivalencias.
+
+VERIFICACION
+- Sintaxis de JS: OK (Node 22).
+- Pruebas de navegador Chromium con API simulada: 3 alimentos identificados,
+  seleccion automatica, cambio de correspondencia, edicion de peso y nombre,
+  calculo, confirmacion y guardado: OK.
+- Pendiente: validar resultados REALES de USDA y Gemma 4 desde el iPhone.
+
+PRIVACIDAD
+No introduce nuevas claves ni credenciales en el frontend.
+No se guarda la fotografia en el navegador ni en GitHub.
+Mientras uses USDA DEMO_KEY pueden existir restricciones de peticiones;
+usa una clave privada valida antes de convertirlo en uso habitual.
+Por seguridad, renueva el APP_TOKEN divulgado anteriormente por chat antes
+ de usar imagenes personales reales.
