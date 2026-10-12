@@ -1,4 +1,4 @@
-/* MyHealth OS NUT-01 v0.5 — device login for 30 days + integrated nutrition diary.
+/* MyHealth OS NUT-01 v0.5.1 — visible USDA errors and retries for 30 days + integrated nutrition diary.
    No API credentials embedded. Images only transmitted after an explicit confirmation.
    Data stays outside GitHub and photos are not saved in localStorage.
  */
@@ -25,7 +25,7 @@ css.textContent=`
 .n04-input{background:#fff!important;color:#24382b!important;border:1px solid #d3ddd3!important;border-radius:10px;padding:10px!important;font-size:13px!important;min-width:0;max-width:100%;width:100%}
 .n04-caption{font-size:11px;color:#788879}.n04-notice{background:#f7f6ec;border:1px solid #e9e3cf;border-radius:11px;padding:10px 12px;font-size:12px;line-height:1.55;color:#6b6348}.n04-ok{background:#edf6eb;border:1px solid #ccdfc8;border-radius:10px;padding:10px}
 .n04-photo{display:block;margin:10px auto;max-height:210px;max-width:100%;border-radius:13px}.n04-photo[hidden]{display:none!important}
-.n04-row{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.62fr);gap:8px;border-bottom:1px solid #e5eae4;padding:12px 0}.n04-row>div{min-width:0}.n04-field-label{display:block;font-size:10px;font-weight:750;color:#77907f;margin-bottom:4px}.n04-match{font-size:10px;color:#67806b;margin-top:4px}.n04-options{display:flex;flex-direction:column;gap:4px;margin-top:6px}.n04-selected{display:flex;flex-direction:column;gap:5px;margin-top:8px;padding:9px 11px;border-radius:11px;border:1px solid #d4e3d3;background:#f3f8f1}.n04-selected b{font-size:11px;color:#286144}.n04-selected span{font-size:11px;color:#415746;line-height:1.35}.n04-selected button,.n04-change{align-self:flex-start;border:0;background:transparent;color:#285d40;text-decoration:underline;padding:3px 0;font-size:11px;font-weight:700;cursor:pointer}.n04-pending{font-size:11px;color:#98654e;margin-top:8px}.n04-optional{max-height:180px;overflow:auto;border:1px solid #e7eee5;padding:6px;border-radius:10px}.n04-option{background:#f8faf6;border:1px solid #e1e8dd;text-align:left;border-radius:8px;padding:7px 9px;font-size:11px;color:#385c44}
+.n04-row{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.62fr);gap:8px;border-bottom:1px solid #e5eae4;padding:12px 0}.n04-row>div{min-width:0}.n04-field-label{display:block;font-size:10px;font-weight:750;color:#77907f;margin-bottom:4px}.n04-match{font-size:10px;color:#67806b;margin-top:4px}.n04-options{display:flex;flex-direction:column;gap:4px;margin-top:6px}.n04-selected{display:flex;flex-direction:column;gap:5px;margin-top:8px;padding:9px 11px;border-radius:11px;border:1px solid #d4e3d3;background:#f3f8f1}.n04-selected b{font-size:11px;color:#286144}.n04-selected span{font-size:11px;color:#415746;line-height:1.35}.n04-selected button,.n04-change{align-self:flex-start;border:0;background:transparent;color:#285d40;text-decoration:underline;padding:3px 0;font-size:11px;font-weight:700;cursor:pointer}.n04-pending{font-size:11px;color:#98654e;margin-top:8px}.n051-error{color:#a44c46;font-size:12px;line-height:1.5;margin-top:8px}.n051-retry{border:1px solid #d0dfd3;background:#f3f8f1;border-radius:9px;padding:6px 9px;margin-top:8px;color:#285d40;font-size:12px;font-weight:700;cursor:pointer}.n04-optional{max-height:180px;overflow:auto;border:1px solid #e7eee5;padding:6px;border-radius:10px}.n04-option{background:#f8faf6;border:1px solid #e1e8dd;text-align:left;border-radius:8px;padding:7px 9px;font-size:11px;color:#385c44}
 .n04-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.n04-summary>div{padding:12px;border-radius:12px;background:#f4f7f1}.n04-summary strong{display:block;font-size:19px}.n04-summary small{font-size:11px;color:#819587}.n04-minor{font-size:11px;line-height:1.5;color:#71806e}
 .n04-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.n04-status{font-size:12px;line-height:1.6;min-height:16px;margin-top:10px;color:#476a51}.n04-busy{opacity:.8;pointer-events:none}.n05-linked{border:1px solid #bbd7bf;background:#f0f7ef;border-radius:11px;padding:10px;font-size:12px;line-height:1.5}.n05-linked[hidden]{display:none}.n05-subtle{border:0!important;background:transparent!important;padding:5px!important;font-size:11px!important;text-decoration:underline;color:#476d57!important}
 @media(max-width:430px){.n04-dialog{padding:14px}.n04-grid{grid-template-columns:1fr}.n04-row{grid-template-columns:minmax(0,1fr) 86px}}
@@ -48,7 +48,7 @@ dialog.innerHTML=`<section class="n04-dialog" role="dialog" aria-modal="true" ar
 <button class="n04-btn n04-btn-primary" id="n04-analyze" type="button">✨ Analizar foto con IA real</button>
 <section id="n04-review" hidden><h3>2 · Revisar propuesta de la IA</h3><div id="n04-dish" style="font-weight:800;font-size:16px"></div><p id="n04-notes"></p><div id="n04-rows"></div>
 <button id="n04-add" class="n04-btn" type="button">+ Añadir ingrediente</button><p class="n04-minor">Revisa las sugerencias USDA y los gramos. Solo tendrás que cambiar la referencia cuando la propuesta no encaje. La fiabilidad visual no equivale a una probabilidad calibrada.</p>
-<button class="n04-btn n04-btn-primary" id="n04-calculate" type="button">Calcular nutrientes con USDA</button>
+<button class="n04-btn n04-btn-primary" id="n04-calculate" type="button">Calcular nutrientes con USDA</button><button class="n04-btn n051-retry" id="n051-retry-all" type="button" hidden>↻ Reintentar búsquedas USDA pendientes</button>
 <div id="n04-nutrients" hidden><h3>3 · Valores nutricionales estimados</h3><div id="n04-summary" class="n04-summary"></div><div id="n04-micros" class="n04-minor" style="margin-top:10px"></div>
 <p class="n04-notice">Solo se suman al diario los macronutrientes con cobertura completa. «Sin datos» nunca significa cero. Puede faltar aceite, salsa o ingredientes no visibles.</p>
 <button class="n04-btn n04-btn-primary" id="n04-save" type="button">✓ Confirmar y sumar al diario</button></div></section>
@@ -171,33 +171,74 @@ function n43SafeAuto(row){const best=row.options?.[0];const score=best?n43Score(
 function rowOptions(row){
  const ranked=row.options||[];
  const current=row.fdcId?`<div class="n04-selected"><b>✓ Referencia USDA sugerida · revisa si coincide</b><span>${escape(row.selectedName||'Referencia seleccionada')} (${escape(row.selectedType||'USDA')})</span><button type="button" data-toggle-options="${row.id}">${row.showOptions?'Ocultar alternativas':'Cambiar referencia'}</button></div>`:'';
- const pending=!row.fdcId?`<div class="n04-pending">${ranked.length?'Selecciona una referencia USDA antes de calcular.':'Buscando correspondencia en USDA…'}</div>`:'';
+ const pending=!row.fdcId?(row.usdaStatus==='error'
+  ?`<div class="n051-error">⚠ ${escape(row.usdaError||'No se ha podido consultar USDA.')}</div><button type="button" class="n051-retry" data-retry-usda="${row.id}">↻ Reintentar USDA</button>`
+  :`<div class="n04-pending">${row.usdaStatus==='loading'?'Buscando correspondencia en USDA…':ranked.length?'Selecciona una referencia USDA antes de calcular.':row.usdaStatus==='empty'?'No se encontraron alimentos. Prueba otro nombre.':'USDA pendiente'}</div>`):'';
  if(!row.showOptions && row.fdcId)return current;
  const visible=row.showAll?ranked:ranked.slice(0,4);
  const choices=visible.map(o=>`<button class="n04-option" data-match="${row.id}" data-fdc="${o.fdcId}" type="button">${escape(o.name)} <span style="color:#8a9c8c">(${escape(o.dataType)})</span></button>`).join('');
  const more=ranked.length>4&&!row.showAll?`<button type="button" class="n04-change" data-more="${row.id}">Ver ${ranked.length-4} alternativas más</button>`:'';
- const nothing=!ranked.length?'<span class="n04-caption">Escribe otro nombre para buscar; USDA está en inglés.</span>':'';
+ const nothing=!ranked.length&&row.usdaStatus!=='error'&&row.usdaStatus!=='loading'?'<span class="n04-caption">Escribe otro nombre para buscar; USDA está en inglés.</span>':'';
  return current+pending+`<div class="n04-options n04-optional" id="n04-list-${row.id}">${choices}${more}${nothing}</div>`;
 }
 function n43CanCalculate(){return state.ingredients.length>0&&state.ingredients.every(r=>Number.isSafeInteger(Number(r.fdcId))&&Number(r.fdcId)>0&&Number.isFinite(+r.grams)&&r.grams>=1&&r.grams<=2000);}
-function n43UpdateCalcButton(){const b=$('n04-calculate');if(b)b.disabled=!n43CanCalculate();}
+function n43UpdateCalcButton(){const b=$('n04-calculate');if(b)b.disabled=!n43CanCalculate();const retry=$('n051-retry-all');if(retry)retry.hidden=!state.ingredients.some(r=>!r.fdcId&&r.usdaStatus==='error');}
 function n43UpdateRow(row){const holder=$('n04-options-'+row.id);if(holder)holder.innerHTML=rowOptions(row);const info=$('n04-info-'+row.id);if(info)info.textContent=`Identificación: ${conf(row.identityConfidence)} · Cantidad: ${conf(row.portionConfidence)}${row.fdcId?' · USDA seleccionado':' · USDA pendiente'}`;n43UpdateCalcButton();}
 function renderRows(){
  $('n04-rows').innerHTML=state.ingredients.map(r=>`<article class="n04-row"><div><label class="n04-field-label" for="n04-name-${r.id}">Alimento</label><input class="n04-input" id="n04-name-${r.id}" data-edit="${r.id}" value="${escape(r.name)}" maxlength="100" autocomplete="off" placeholder="Escribe un alimento"><div class="n04-match" id="n04-info-${r.id}">Identificación: ${conf(r.identityConfidence)} · Cantidad: ${conf(r.portionConfidence)} · ${r.fdcId?'USDA seleccionado':'USDA pendiente'}</div><div id="n04-options-${r.id}">${rowOptions(r)}</div></div><div><label class="n04-field-label">Gramos</label><input type="number" class="n04-input" data-grams="${r.id}" min="1" max="2000" step="1" value="${r.grams}"><label class="n04-field-label" style="margin-top:7px">Preparación</label><input class="n04-input" data-preparation="${r.id}" maxlength="45" value="${escape(r.preparation||'')}"><button class="n04-btn" style="margin-top:6px;padding:5px 8px;font-size:11px" data-remove="${r.id}" type="button">Eliminar alimento</button></div></article>`).join('');
  n43UpdateCalcButton();
 }
 let counter=1;
-function newRow(src){return {id:String(counter++),name:src.name||'',preparation:src.preparation||'',grams:src.grams||100,identityConfidence:src.identityConfidence||'no_evaluable',portionConfidence:src.portionConfidence||'no_evaluable',search:src.englishSearch||n43English(src.name||''),fdcId:null,selectedName:null,selectedType:null,options:[],showOptions:false,showAll:false};}
-async function searchRow(row,query){if(!query||query.length<2)return;try{
- const data=await post('/foods',{query});if(!state.ingredients.includes(row)||row.search!==query)return;
- row.options=n43Rank(row,data.options||[]);
- const candidate=n43SafeAuto(row);
- if(candidate && !row.fdcId){row.fdcId=Number(candidate.fdcId);row.selectedName=candidate.name;row.selectedType=candidate.dataType;row.showOptions=false;}
- if(!candidate && !row.fdcId)row.showOptions=true;
+function newRow(src){return {id:String(counter++),name:src.name||'',preparation:src.preparation||'',grams:src.grams||100,identityConfidence:src.identityConfidence||'no_evaluable',portionConfidence:src.portionConfidence||'no_evaluable',search:src.englishSearch||n43English(src.name||''),fdcId:null,selectedName:null,selectedType:null,options:[],showOptions:false,showAll:false,usdaStatus:'idle',usdaError:null};}
+async function searchRow(row,query){
+ if(!query||query.length<2)return;
+ row.usdaStatus='loading';row.usdaError=null;
  n43UpdateRow(row);
- if(!row.options.length)say(`USDA no devolvió coincidencias para «${query}». Prueba una búsqueda diferente.`,true);
-}catch(e){say(e.message,true);}}
-async function analyzePhoto(){if(!state.image)throw Error('Primero toma o selecciona una foto.');if(!$('n04-consent').checked)throw Error('Necesitamos tu confirmación para enviar la foto a Cloudflare.');say('Analizando fotografía con Gemma 4…');const result=await post('/analyze',{image:state.image});state.dish=result.dish;state.notes=result.notes;state.hidden=result.hiddenIngredients||[];state.ingredients=(result.ingredients||[]).map(newRow);state.calculated=null;$('n04-dish').textContent=result.dish;$('n04-notes').textContent=[result.notes,state.hidden.length?'Posibles ingredientes no visibles: '+state.hidden.join(', '):''].filter(Boolean).join(' · ');$('n04-review').hidden=false;$('n04-nutrients').hidden=true;renderRows();say('Buscando una referencia USDA adecuada para cada alimento…');await Promise.all(state.ingredients.map(async row=>{try{await searchRow(row,row.search)}catch{}}));if(n43CanCalculate())say('Referencias USDA sugeridas. Revisa las cantidades y pulsa Calcular nutrientes.');else say('Revisa los alimentos pendientes: necesitan una referencia USDA antes de calcular.',true);}
+ try{
+   const data=await post('/foods',{query});
+   if(!state.ingredients.includes(row)||row.search!==query)return;
+   row.options=n43Rank(row,data.options||[]);
+   const candidate=n43SafeAuto(row);
+   if(candidate&&!row.fdcId){row.fdcId=Number(candidate.fdcId);row.selectedName=candidate.name;row.selectedType=candidate.dataType;row.showOptions=false;}
+   if(!candidate&&!row.fdcId)row.showOptions=true;
+   row.usdaStatus=row.options.length?'ready':'empty';
+   n43UpdateRow(row);
+ }catch(e){
+   if(!state.ingredients.includes(row)||row.search!==query)return;
+   row.usdaStatus='error';row.usdaError=String(e?.message||'Error desconocido en la búsqueda USDA.').slice(0,270);
+   row.options=[];row.showOptions=false;n43UpdateRow(row);
+ }
+}
+function n051Summary(){
+ const failed=state.ingredients.filter(r=>!r.fdcId&&r.usdaStatus==='error');
+ if(failed.length){const messages=[...new Set(failed.map(r=>r.usdaError))];
+   say('Error USDA ('+failed.length+' alimentos): '+messages.join(' | ')+'. Puedes reintentar sin volver a hacer la foto.',true);return;}
+ if(n43CanCalculate())say('Referencias USDA sugeridas. Revisa cantidades y pulsa Calcular nutrientes.');
+ else say('Revisa los alimentos pendientes: necesitan una referencia USDA antes de calcular.',true);
+}
+async function n051RetryPending(){
+ const rows=state.ingredients.filter(r=>!r.fdcId&&r.search?.length>=2);
+ if(!rows.length)return;
+ say('Reintentando '+rows.length+' búsquedas USDA, sin repetir el análisis de la foto…');
+ // Sequential to reduce bursts with the public demo rate limit.
+ for(const row of rows)await searchRow(row,row.search);
+ n051Summary();
+}
+async function analyzePhoto(){
+ if(!state.image)throw Error('Primero toma o selecciona una foto.');
+ if(!$('n04-consent').checked)throw Error('Necesitamos tu confirmación para enviar la foto a Cloudflare.');
+ say('Analizando fotografía con Gemma 4…');
+ const result=await post('/analyze',{image:state.image});
+ state.dish=result.dish;state.notes=result.notes;state.hidden=result.hiddenIngredients||[];
+ state.ingredients=(result.ingredients||[]).map(newRow);state.calculated=null;
+ $('n04-dish').textContent=result.dish;
+ $('n04-notes').textContent=[result.notes,state.hidden.length?'Posibles ingredientes no visibles: '+state.hidden.join(', '):''].filter(Boolean).join(' · ');
+ $('n04-review').hidden=false;$('n04-nutrients').hidden=true;renderRows();
+ say('Buscando una referencia USDA adecuada para cada alimento…');
+ // Sequential queries avoid bursts against temporary/demo keys.
+ for(const row of state.ingredients)await searchRow(row,row.search);
+ n051Summary();
+}
 function renderNutrients(){const v=state.calculated?.nutrients||{};const main=[['kcal','Energía'],['protein','Proteínas'],['carbs','Hidratos'],['fat','Grasas']];$('n04-summary').innerHTML=main.map(([k,label])=>`<div><strong>${v[k]?.value===null||v[k]?.value===undefined?'—':rounded(v[k].value)} ${escape(v[k]?.unit||'')}</strong><small>${label}${v[k]&&!v[k].complete?' · datos parciales':''}</small></div>`).join('');$('n04-micros').innerHTML=Object.entries(v).filter(([k])=>!main.some(([m])=>k===m)).map(([k,t])=>`<div style="padding:5px 0;border-bottom:1px solid #e5eae4">${escape(t.label)}: <strong>${t.value==null?'Sin datos':(t.complete?'':'≥ ')+rounded(t.value,2)+' '+escape(t.unit)}</strong>${t.complete?'':' · incompleto ('+t.covered+'/'+t.of+')'}</div>`).join('');$('n04-nutrients').hidden=false;}
 async function calculate(){say('Consultando composición de alimentos en USDA…');const entries=state.ingredients.map(r=>({name:r.name,fdcId:r.fdcId,grams:r.grams}));const value=await post('/nutrition',{ingredients:entries});state.calculated=value;renderNutrients();say('Valores calculados desde USDA. Revisa las cantidades antes de confirmar.');}
 function save(){
@@ -235,6 +276,8 @@ dialog.addEventListener('click',e=>{
  if(t.closest('#n04-analyze')){withBusy(analyzePhoto);return;}
  if(t.closest('#n04-add')){state.ingredients.push(newRow({name:'',grams:100}));state.calculated=null;$('n04-nutrients').hidden=true;renderRows();return;}
  if(t.closest('#n04-calculate')){withBusy(calculate);return;}
+ if(t.closest('#n051-retry-all')){withBusy(n051RetryPending);return;}
+ const retry=t.closest('[data-retry-usda]');if(retry){const row=state.ingredients.find(r=>r.id===retry.dataset.retryUsda);if(row){withBusy(async()=>{await searchRow(row,row.search);n051Summary();});}return;}
  if(t.closest('#n04-save')){withBusy(save);return;}
  const rm=t.closest('[data-remove]');if(rm){state.ingredients=state.ingredients.filter(r=>r.id!==rm.dataset.remove);state.calculated=null;$('n04-nutrients').hidden=true;renderRows();return;}
  const toggle=t.closest('[data-toggle-options]');if(toggle){const row=state.ingredients.find(r=>r.id===toggle.dataset.toggleOptions);if(row){row.showOptions=!row.showOptions;row.showAll=false;n43UpdateRow(row);}return;}
@@ -243,7 +286,7 @@ dialog.addEventListener('click',e=>{
 });
 let debounce;
 dialog.addEventListener('input',e=>{const t=e.target;
- if(t.dataset.edit){const row=state.ingredients.find(r=>r.id===t.dataset.edit);if(!row)return;row.name=t.value;row.search=n43English(t.value);row.fdcId=null;row.selectedName=null;row.selectedType=null;row.options=[];row.showOptions=true;row.showAll=false;state.calculated=null;$('n04-nutrients').hidden=true;n43UpdateRow(row);clearTimeout(debounce);const query=row.search;debounce=setTimeout(()=>{if(query.length>2)searchRow(row,query)},520);}
+ if(t.dataset.edit){const row=state.ingredients.find(r=>r.id===t.dataset.edit);if(!row)return;row.name=t.value;row.search=n43English(t.value);row.fdcId=null;row.selectedName=null;row.selectedType=null;row.options=[];row.showOptions=true;row.showAll=false;row.usdaStatus='idle';row.usdaError=null;state.calculated=null;$('n04-nutrients').hidden=true;n43UpdateRow(row);clearTimeout(debounce);const query=row.search;debounce=setTimeout(()=>{if(query.length>2)searchRow(row,query)},520);}
  if(t.dataset.grams){const row=state.ingredients.find(r=>r.id===t.dataset.grams);if(row){row.grams=Number(t.value);state.calculated=null;$('n04-nutrients').hidden=true;n43UpdateCalcButton();}}
  if(t.dataset.preparation){const row=state.ingredients.find(r=>r.id===t.dataset.preparation);if(row)row.preparation=t.value;}
 });
