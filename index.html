@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-  <meta name="theme-color" content="#f6f7f3"/>
+  <meta name="theme-color" content="#F8F5F0"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-title" content="MyHealth OS"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
@@ -11,14 +11,16 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://*.workers.dev; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"/>
   <meta name="description" content="MyHealth OS, prototipo interactivo de salud personal con datos sintéticos."/>
   <meta name="color-scheme" content="light dark"/>
-  <title>MyHealth OS — Demo funcional</title>
+  <title>MyHealth OS · Tu salud en perspectiva</title>
   <link rel="icon" href="icon-192.png" type="image/png"/>
   <link rel="apple-touch-icon" href="icon-192.png"/>
   <link rel="manifest" href="manifest.webmanifest"/>
   <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="stable-visual.css"/>
   <script src="app.js" defer></script>
   <script src="nutrition-addon.js" defer></script>
   <script src="nutrition-ai.js" defer></script>
+  <script src="stable-visual.js" defer></script>
 </head>
 <body>
   <div id="app" class="app-shell">
@@ -29,7 +31,7 @@
       <div class="sidebar-bottom">
         <div class="demo-note"><span class="live-dot"></span><div><b>Entorno de demostración</b><small>Sin datos de salud reales</small></div></div>
         <button type="button" class="sidebar-config" data-action="settings"><span aria-hidden="true">⚙</span> Preferencias</button>
-        <div class="sidebar-footer">MYHEALTH OS · ALPHA 0.3</div>
+        <div class="sidebar-footer">MYHEALTH OS · ESTABLE</div>
       </div>
     </aside>
     <div class="main-area">
