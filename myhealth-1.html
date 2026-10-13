@@ -1,0 +1,530 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#FBFCF9"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"><title>MyHealth OS · 1.0 Alpha</title><style>:root{--paper:#FBFCF9;--ink:#121E19;--muted:#6D7C73;--border:#E3EAE3;--lime:#8AFE42;--green:#073D30;--pale:#E5F9D7;--shadow:0 14px 50px rgba(7,45,32,.06);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper);font-synthesis:none}
+*{box-sizing:border-box}html,body{min-height:100%;margin:0}body{overscroll-behavior:contain}button,textarea,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #56D430;outline-offset:3px}button:active{transform:translateY(1px)}a{color:inherit}.sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.app-frame{min-height:100dvh;display:flex}.side{position:fixed;left:0;top:0;bottom:0;width:262px;border-right:1px solid var(--border);background:#F8FAF6;padding:32px 17px 22px;display:flex;flex-direction:column;z-index:4}.side-head{padding:0 14px}.side-head p{color:#8B998E;letter-spacing:.19em;font-size:9px;margin:12px 0 48px;font-weight:750}.brand{display:flex;align-items:center;gap:9px;font-weight:780;letter-spacing:-.045em;font-size:19px;white-space:nowrap}.brand em{font-style:normal;font-weight:430;color:#728279}.brand-sign{background:var(--green);color:#fff;border-radius:13px;width:34px;height:34px;display:grid;place-items:center;letter-spacing:-.14em;font-size:22px;padding-right:4px}.bright-dot{color:var(--lime)}.side nav{display:grid;gap:7px}.navbtn{border:0;background:none;display:flex;align-items:center;gap:14px;color:#6B796F;border-radius:13px;text-align:left;padding:14px;font-size:13px;font-weight:670;transition:background .2s}.navbtn span{font-size:19px;width:21px;text-align:center;font-weight:450}.navbtn.active{background:#DFFFCE;color:#183B26}.side-bottom{margin-top:auto;padding:12px 14px}.status-live{display:flex;align-items:center;gap:9px;font-size:11px;color:#244E3A}.live-circle{display:inline-block;width:8px;height:8px;border-radius:50%;background:#68D82E}.side-bottom p{font-size:11px;line-height:1.55;color:#8A978C}.side-bottom a{font-size:11px;display:inline-block;margin-top:9px;text-decoration:none;font-weight:720}.main-panel{margin-left:262px;flex:1;min-width:0}.topbar{height:79px;border-bottom:1px solid #EFF1EC;display:flex;align-items:center;justify-content:space-between;padding:0 50px}.topbar .brand{display:none}.top-actions{display:flex;gap:22px;align-items:center}.preview-chip{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;color:#64796A}.preview-chip>span{width:7px;height:7px;border-radius:50%;background:var(--lime)}.round-icon{border:1px solid var(--border);background:white;width:35px;height:35px;border-radius:50%;font-size:19px;color:#38574B}.mobile-nav{display:none}.main-wrap{width:100%;max-width:770px;padding:50px 40px 90px;margin:auto}.hero-intro{margin:5px 0 30px}.eyebrow{font-size:10px;letter-spacing:.17em;font-weight:780;color:#739077}.eyebrow span{color:#CCD8CC}.hero-intro h1,.content h1{font-size:clamp(38px,4.1vw,61px);line-height:1.07;letter-spacing:-.064em;margin:20px 0 15px;font-weight:810}.hero-intro h1 em,.content h1 em{font-style:normal;color:#287C4A}.hero-intro>p,.lead{font-size:15px;color:#66766C;max-width:520px;line-height:1.6;margin:0}.focus-card{background:var(--pale);border-radius:23px;padding:29px 34px;box-shadow:0 8px 25px rgba(60,132,50,.05);position:relative;overflow:hidden}.focus-card:after{content:'✳';position:absolute;right:-20px;top:-62px;font-size:210px;color:#C9F5AB;line-height:1;transform:rotate(-8deg);pointer-events:none}.focus-card>*{position:relative;z-index:1}.focus-top{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.12em;font-weight:800;color:#28603C}.focus-indicator{opacity:.65}.focus-card h2{font-size:clamp(25px,3vw,34px);letter-spacing:-.045em;line-height:1.17;max-width:470px;margin:27px 0 12px}.focus-card>p{font-size:14px;line-height:1.6;color:#46654B;max-width:440px;margin:0}.focus-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:25px}.dark-button{display:inline-flex;align-items:center;justify-content:space-between;gap:22px;border:0;background:var(--green);color:#fff;padding:14px 18px;border-radius:13px;font-size:13px;font-weight:740;min-height:44px}.dark-button span{color:#9AF76B}.why-button,.neutral-button,.outline-button{border:0;background:transparent;font-weight:710;font-size:12px;color:#326142;padding:11px}.focus-reason{margin-top:22px;border-top:1px solid #C8E4BC;padding-top:14px;font-size:12px;color:#476648;line-height:1.5;max-width:500px}.dialogue-head{display:flex;justify-content:space-between;align-items:end;margin:38px 0 16px}.dialogue-head h2{font-size:24px;letter-spacing:-.04em;margin:6px 0 0}.local-pill{border:1px solid #D9E8DD;background:white;border-radius:100px;font-size:11px;color:#4C755D;padding:8px 12px}.dialogue{min-height:97px;display:grid;align-content:start;gap:12px}.welcome-copy{display:flex;align-items:flex-start;gap:15px;padding:20px 20px 24px;background:white;border:1px solid #E8EFE8;border-radius:18px}.assistant-avatar{flex:none;width:34px;height:34px;display:grid;place-items:center;border-radius:50%;color:#BAFF90;background:var(--green);font-size:17px}.welcome-copy strong{font-size:14px}.welcome-copy p{font-size:12px;line-height:1.65;color:var(--muted);margin:9px 0 0}.bubble-row{display:flex;gap:12px;align-items:flex-start}.bubble-row.right{justify-content:flex-end}.bubble{padding:15px 18px;max-width:90%;font-size:13px;line-height:1.6}.bubble.user{background:#9AFF5D;color:#14351C;border-radius:17px 17px 4px 17px;max-width:82%;font-weight:570}.bubble.assistant{background:white;border:1px solid #E3EBE3;border-radius:4px 17px 17px 17px;flex:1}.bubble.assistant>strong{display:block;font-size:14px;margin-bottom:3px}.bubble.assistant>p{margin:5px 0 9px;color:#36473C}.explain{display:block;color:#809084;font-size:10px;margin-top:15px;line-height:1.5}.sources{border-top:1px solid #E8EDE6;margin-top:12px;padding-top:12px}.sources summary{cursor:pointer;font-weight:750;font-size:12px;color:#266D4B}.sources summary span{float:right}.sources .evidence-item{margin-top:9px;padding:9px 0 0}.sources .evidence-item strong{font-size:11px}.sources .evidence-item p{font-size:10px}.sources .evidence-item span{font-size:10px}.suggestions{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 14px}.suggestions button{border:1px solid #D8E4DA;background:white;color:#426A50;padding:10px 12px;border-radius:100px;font-size:11px;font-weight:670}.composer{background:white;border:1px solid #DAE4DB;box-shadow:var(--shadow);border-radius:19px;display:flex;align-items:flex-end;gap:6px;padding:9px 10px 9px 17px}.composer textarea{flex:1;border:0;resize:vertical;min-height:42px;max-height:160px;outline:none;font-size:13px;line-height:1.55;background:transparent;padding:12px 0 4px;color:#182F21}.composer button{border:0;border-radius:13px;background:var(--lime);color:#073321;font-size:24px;width:45px;height:45px;flex:none}.composer-note{font-size:10px;text-align:center;color:#95A199;margin:10px 0}.goal-chip{font-size:11px;color:#50725D;margin-top:18px}.goal-chip span{font-size:10px;letter-spacing:.08em;font-weight:800;color:#307047;margin-right:7px}.approval{background:#F6FAF2;border:1px solid #BCE79D;border-radius:17px;padding:21px}.approval-header,.plan-head{display:flex;justify-content:space-between;gap:12px;font-size:9px;letter-spacing:.1em;font-weight:810;color:#3E7049}.approval-header b{letter-spacing:0;text-transform:none;font-weight:620;color:#7E8F75}.approval h3{font-size:17px;letter-spacing:-.03em;margin:15px 0 5px}.approval>p{color:#68766C;font-size:12px;line-height:1.5}.approval label{display:block;font-size:11px;font-weight:720;margin-top:14px;color:#48614D}.approval input,.approval select,.approval textarea{display:block;margin-top:8px;width:100%;border-radius:10px;border:1px solid #C9D9C7;padding:11px 12px;background:white;color:var(--ink);font-size:13px}.approval-actions{display:flex;gap:10px;align-items:center;margin-top:18px}.approval-actions .neutral-button{color:#667968}.content>.eyebrow{display:block;margin-top:0}.content h1{margin-top:16px}.factline{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:30px 0 37px}.factline>div{display:grid;gap:3px;padding:19px 21px;background:#E9F9E1;border-radius:14px}.factline strong{font-size:29px;letter-spacing:-.055em}.factline strong small{color:#849A82;font-weight:540;font-size:14px}.factline span{font-size:11px;color:#517353}.section-row{display:flex;justify-content:space-between;align-items:center}.section-row h2{font-size:23px;letter-spacing:-.045em}.section-row>span{font-size:11px;color:#899689}.category-scroll{display:flex;gap:7px;overflow:auto;margin:8px 0 17px;padding:5px 0}.category{background:white;border:1px solid #E5ECE4;padding:10px 12px;border-radius:30px;white-space:nowrap;font-size:11px;color:#69776A}.category.selected{background:#DDF9C8;color:#16482B;border-color:#BCE6A5;font-weight:750}.history-list{background:white;border-radius:17px;border:1px solid var(--border);overflow:hidden}.evidence-item{display:flex;gap:14px;padding:17px;border-bottom:1px solid #EDF1EA;align-items:flex-start}.evidence-item:last-child{border-bottom:0}.kind-icon{flex:none;background:#EFF8E7;color:#356E4B;font-size:20px;width:35px;height:35px;border-radius:11px;display:grid;place-items:center}.fact-copy{min-width:0;flex:1}.fact-copy strong{font-size:13px;font-weight:740;overflow-wrap:anywhere}.fact-copy p{font-size:12px;color:#68766D;line-height:1.5;margin:5px 0}.fact-copy span{font-size:10px;color:#859385}.quiet{font-size:11px;color:#8A978A;line-height:1.6}.empty-view{border:1px dashed #CEDDCE;padding:25px;border-radius:14px;color:#7A897D;font-size:13px;margin-top:25px}.plan-card{background:white;border:1px solid var(--border);border-radius:19px;margin:20px 0;padding:25px}.plan-card h2{font-size:19px;margin:16px 0 9px;letter-spacing:-.035em}.plan-card>p{font-size:13px;color:#607362;margin:0 0 22px}.progress-line{background:#E5F0E1;border-radius:100px;height:6px;overflow:hidden;margin-bottom:13px}.progress-line span{background:#65D73C;display:block;height:100%;border-radius:100px}.plan-footer{display:flex;align-items:center;justify-content:space-between;gap:12px}.plan-footer span{font-size:11px;color:#899489}.plan-footer button{border:0;background:var(--green);color:white;border-radius:11px;padding:11px;font-size:11px;white-space:nowrap}.plan-card details{margin-top:15px;font-size:11px;color:#47684F}.plan-log{font-size:11px;border-top:1px solid var(--border);padding-top:10px}.privacy-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:30px 0}.privacy-grid article{background:#F0F7EC;padding:23px;border-radius:15px}.privacy-grid span{font-size:10px;letter-spacing:.09em;color:#517754;font-weight:800}.privacy-grid h3{font-size:38px;letter-spacing:-.07em;margin:13px 0 0}.privacy-grid p{font-size:11px;color:#6D806D;line-height:1.6}.setting-card{padding:24px;border-radius:17px;border:1px solid var(--border);background:#fff}.setting-card h2{font-size:20px;margin-top:0}.setting-card p{font-size:12px;color:#637166;line-height:1.7}.setting-card .dark-button{margin-top:6px}.outline-button{display:block;border:1px solid #BBD5C2;color:#37614A;border-radius:12px;margin-top:12px;min-height:43px}.warning{background:#FFF2E0;border-radius:12px;padding:13px;margin:14px 0;font-size:11px}.return-link{display:inline-block;margin:23px 0;font-size:13px;font-weight:700;text-decoration:none}.loading{padding:90px;text-align:center;color:#7B9180;font-size:13px}#notification{position:fixed;bottom:20px;right:23px;background:#113E2C;color:white;border-radius:10px;padding:0 15px;max-width:340px;font-size:12px;line-height:1.5;z-index:9}#notification:not(:empty){padding:14px 19px}
+@media(min-width:1500px){.main-wrap{max-width:830px}.topbar{padding:0 80px}}
+@media(max-width:1030px){.side{width:214px}.main-panel{margin-left:214px}.topbar{padding:0 24px}.main-wrap{padding:42px 26px 90px}.side nav .navbtn{font-size:12px}}
+@media(max-width:720px){.side{display:none}.main-panel{margin:0;padding-bottom:70px}.topbar{height:68px;padding:0 20px}.topbar .brand{display:flex;font-size:16px}.brand-sign{width:29px;height:29px;border-radius:10px;font-size:19px}.top-actions{gap:12px}.preview-chip{font-size:9px}.main-wrap{padding:27px 20px 80px}.hero-intro{margin:4px 0 24px}.hero-intro h1,.content h1{font-size:40px;line-height:1.11;margin:17px 0 12px}.hero-intro>p,.lead{font-size:13px;line-height:1.6}.focus-card{padding:23px;border-radius:18px}.focus-card h2{font-size:28px;margin:23px 0 10px}.focus-card:after{font-size:160px;top:-40px;right:-20px}.focus-card>p{font-size:13px}.dark-button{font-size:12px}.dialogue-head{margin-top:33px}.dialogue-head h2{font-size:22px}.local-pill{font-size:10px}.dialogue{min-height:78px}.mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:5;background:rgba(251,252,249,.97);border-top:1px solid #E2E9DF;padding:6px 9px calc(6px + env(safe-area-inset-bottom,0px));justify-content:space-between;backdrop-filter:blur(12px)}.mobile-nav .navbtn{display:grid;gap:1px;text-align:center;justify-items:center;align-content:center;padding:7px 7px;min-height:49px;border-radius:11px;flex:1;font-size:9px}.mobile-nav .navbtn span{font-size:19px}.bubble{max-width:94%}.bubble.user{max-width:90%}.composer{border-radius:16px}.suggestions{flex-wrap:nowrap;overflow:auto;padding-bottom:4px}.suggestions button{white-space:nowrap}.factline{gap:6px}.factline>div{padding:13px 10px}.factline strong{font-size:26px}.factline span{font-size:10px}.privacy-grid{gap:8px}.privacy-grid article{padding:15px}.privacy-grid h3{font-size:30px}.plan-footer{display:grid}.plan-footer button{justify-self:start}.approval-header{display:grid}.focus-actions{gap:4px}.content h1{font-size:42px}#notification{bottom:84px;right:16px;left:16px;max-width:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+
+.legacy-plan{border-bottom:1px solid var(--border);padding:15px 3px}.legacy-plan span{display:block;font-size:10px;letter-spacing:.07em;color:#779078;font-weight:750;margin-bottom:7px}.legacy-plan strong{font-size:13px}.legacy-plan p{font-size:12px;line-height:1.5;color:#7A877D;margin:7px 0}
+</style></head><body><div id="app"><noscript>Activa JavaScript para abrir MyHealth OS.</noscript></div><script>"use strict";
+/** MyHealth OS 1.0: source-level modules compiled to a single browser artifact. */
+var MH;
+(function (MH) {
+    MH.iso = (d = new Date()) => [d.getFullYear(), String(d.getMonth() + 1).padStart(2, '0'), String(d.getDate()).padStart(2, '0')].join('-');
+    MH.dayShift = (from, offset) => { const d = new Date(from + 'T12:00:00'); d.setDate(d.getDate() + offset); return MH.iso(d); };
+    MH.dateOK = (x) => typeof x === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(x) && !Number.isNaN(new Date(x + 'T12:00:00').getTime());
+    MH.clean = (v, n = 200) => String(v ?? '').trim().slice(0, n);
+    MH.esc = (v) => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] ?? c));
+    MH.uid = () => crypto?.randomUUID?.() || ('m1-' + Date.now() + '-' + Math.random().toString(36).slice(2));
+    MH.displayDate = (x) => new Date(x + 'T12:00:00').toLocaleDateString('es-ES', { day: 'numeric', month: 'short' });
+    MH.classify = (input) => {
+        const s = input.toLowerCase();
+        if (/crossfit|entren|ejercicio|caminat|paseo|corr|gimnasio|nataci|yoga|bicicleta/.test(s))
+            return 'Actividad';
+        if (/desayun|almorz|com[ií]|cena|merienda|tostad|pollo|ensalada|arroz|café|cafe/.test(s))
+            return 'Comida';
+        if (/dorm|siesta|sueño|sueno|descans/.test(s))
+            return 'Sueño';
+        if (/dolor|migraña|mareo|cefalea|molestia|síntoma|sintoma/.test(s))
+            return 'Síntoma';
+        if (/ansied|estres|cansad|bienestar|anim|ánim|energía|energia/.test(s))
+            return 'Bienestar';
+        return 'Otro';
+    };
+    MH.isArray = (v) => Array.isArray(v);
+    MH.obj = (v) => v !== null && typeof v === 'object' && !Array.isArray(v) ? v : {};
+})(MH || (MH = {}));
+var MH;
+(function (MH) {
+    const V1 = { events: 'myhealth_os_v1_events', goals: 'myhealth_os_v1_goals', experiments: 'myhealth_os_v1_experiments', audit: 'myhealth_os_v1_audit' };
+    MH.legacyKeys = Object.freeze({
+        manual: 'myhealth_os_lab_records_013', checkins: 'myhealth_os_lab_checkins_015', moods: 'myhealth_os_lab_mood_012',
+        symptoms: 'myhealth_os_lab_symptoms_017', observations: 'myhealth_os_lab_observations_017',
+        plans: 'myhealth_os_lab_plans_016', programs: 'myhealth_os_lab_programs_017'
+    });
+    function readJSON(key, fallback = []) {
+        try {
+            const s = localStorage.getItem(key);
+            return s === null ? fallback : JSON.parse(s);
+        }
+        catch {
+            return fallback;
+        }
+    }
+    MH.readJSON = readJSON;
+    function save(key, v) { localStorage.setItem(key, JSON.stringify(v)); }
+    function localEvents() { const a = readJSON(V1.events); return MH.isArray(a) ? a.filter(x => x?.status === 'confirmed' && MH.dateOK(x.date) && x.title) : []; }
+    MH.localEvents = localEvents;
+    function localGoals() { const a = readJSON(V1.goals); return MH.isArray(a) ? a : []; }
+    MH.localGoals = localGoals;
+    function localExperiments() { const a = readJSON(V1.experiments); return MH.isArray(a) ? a : []; }
+    MH.localExperiments = localExperiments;
+    function audit(kind, details) { const a = readJSON(V1.audit); const next = MH.isArray(a) ? a : []; next.push({ at: new Date().toISOString(), kind, details: MH.clean(details, 200) }); save(V1.audit, next.slice(-200)); }
+    function addEvent(payload) {
+        const title = MH.clean(payload.title, 150), detail = MH.clean(payload.detail, 500);
+        const allowed = ['Actividad', 'Comida', 'Bienestar', 'Sueño', 'Síntoma', 'Medición', 'Otro'];
+        const kind = allowed.includes(payload.kind) ? payload.kind : MH.classify(title + ' ' + detail);
+        const date = MH.dateOK(payload.date) && payload.date <= MH.iso() ? payload.date : MH.iso();
+        if (title.length < 3)
+            throw Error('Describe el acontecimiento con un poco más de detalle.');
+        const event = { id: 'v1:' + MH.uid(), date, title, detail, kind, status: 'confirmed', origin: 'v1-local', label: 'Confirmado en 1.0' };
+        save(V1.events, [...localEvents(), event].slice(-600));
+        audit('event.confirm', event.id);
+        return event;
+    }
+    MH.addEvent = addEvent;
+    function addCheckin(payload) {
+        const feeling = MH.clean(payload.feeling, 60), note = MH.clean(payload.note, 260);
+        const allowed = ['bien', 'cansado', 'estresado', 'con energía', 'con sueño', 'normal'];
+        const energy = payload.energy ? Number(payload.energy) : null, stress = payload.stress ? Number(payload.stress) : null;
+        if (feeling && !allowed.includes(feeling))
+            throw Error('Selecciona una sensación disponible.');
+        if (energy !== null && (!Number.isInteger(energy) || energy < 1 || energy > 5))
+            throw Error('La energía debe estar entre 1 y 5.');
+        if (stress !== null && (!Number.isInteger(stress) || stress < 1 || stress > 5))
+            throw Error('El estrés debe estar entre 1 y 5.');
+        if (!feeling && energy === null && stress === null && !note)
+            throw Error('Indica al menos una sensación, un nivel o una nota.');
+        const details = [feeling ? ('Sensación: ' + feeling) : '', energy === null ? '' : ('Energía ' + energy + '/5'), stress === null ? '' : ('Estrés ' + stress + '/5'), note].filter(Boolean).join(' · ');
+        const event = { id: 'v1:' + MH.uid(), date: MH.iso(), title: 'Cómo me encuentro', detail: details, kind: 'Bienestar', status: 'confirmed', origin: 'v1-local', label: 'Declarado en 1.0', energy, stress };
+        save(V1.events, [...localEvents(), event].slice(-600));
+        audit('checkin.confirm', event.id);
+        return event;
+    }
+    MH.addCheckin = addCheckin;
+    function setGoal(payload) {
+        const title = MH.clean(payload.title, 170);
+        if (title.length < 5)
+            throw Error('Indica un objetivo más concreto.');
+        const goals = localGoals().map(g => g.status === 'active' ? { ...g, status: 'closed' } : g);
+        const goal = { id: MH.uid(), title, createdAt: new Date().toISOString(), status: 'active' };
+        save(V1.goals, [...goals, goal].slice(-60));
+        audit('goal.confirm', title);
+        return goal;
+    }
+    MH.setGoal = setGoal;
+    function startExperiment(payload) {
+        const title = MH.clean(payload.title, 170), question = MH.clean(payload.question, 190), duration = payload.duration === '28' ? 28 : 14;
+        if (title.length < 5 || question.length < 5)
+            throw Error('El programa necesita objetivo y pregunta de seguimiento.');
+        if (localExperiments().filter(x => x.status === 'active').length >= 3)
+            throw Error('Cierra un programa antes de iniciar otro.');
+        const ex = { id: MH.uid(), title, question, start: MH.iso(), duration, status: 'active', logs: [] };
+        save(V1.experiments, [...localExperiments(), ex].slice(-30));
+        audit('experiment.confirm', title);
+        return ex;
+    }
+    MH.startExperiment = startExperiment;
+    function logExperiment(payload) {
+        const all = localExperiments(), x = all.find(z => z.id === payload.id && z.status === 'active');
+        if (!x)
+            throw Error('No se encuentra un programa activo.');
+        const note = MH.clean(payload.note, 350);
+        if (!note)
+            throw Error('Escribe brevemente cómo te ha ido.');
+        x.logs = x.logs.filter(y => y.date !== MH.iso());
+        x.logs.push({ date: MH.iso(), note });
+        save(V1.experiments, all);
+        audit('experiment.log', x.id);
+        return x;
+    }
+    MH.logExperiment = logExperiment;
+    function exportNewData() {
+        const bundle = { format: 'myhealth-os-v1-export', version: 1, createdAt: new Date().toISOString(), warning: 'Archivo con datos personales, NO cifrado; no subir a GitHub.',
+            events: localEvents(), goals: localGoals(), experiments: localExperiments(), audit: readJSON(V1.audit, []) };
+        const blob = new Blob([JSON.stringify(bundle, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'myhealth-os-v1-respaldo-' + MH.iso() + '.json';
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(a.href), 3000);
+    }
+    MH.exportNewData = exportNewData;
+    function clearOnlyV1() { for (const k of Object.values(V1))
+        localStorage.removeItem(k); }
+    MH.clearOnlyV1 = clearOnlyV1;
+})(MH || (MH = {}));
+var MH;
+(function (MH) {
+    const normalized = (v) => {
+        const k = MH.clean(v, 70).toLowerCase();
+        return k === 'comida' || k === 'alimentación' ? 'Comida' : (['actividad', 'entrenamiento', 'ejercicio', 'deporte'].includes(k) ? 'Actividad' : k === 'sueño' ? 'Sueño' : k === 'bienestar' ? 'Bienestar' : k === 'síntoma' ? 'Síntoma' : k === 'medición' ? 'Medición' : 'Otro');
+    };
+    function legacyManual() {
+        const arr = MH.readJSON(MH.legacyKeys.manual, []);
+        if (!MH.isArray(arr))
+            return [];
+        return arr.filter(x => MH.dateOK(MH.obj(x).date) && MH.clean(MH.obj(x).title, 150) && MH.obj(x).status !== 'pending')
+            .map(x => { const z = MH.obj(x); return { id: 'manual:' + MH.clean(z.id, 160), date: z.date, kind: normalized(z.kind), title: MH.clean(z.title, 150), detail: MH.clean(z.details, 450), status: 'confirmed', origin: 'legacy-manual', label: 'LAB · Registro manual' }; });
+    }
+    function legacyCheckins() {
+        const arr = MH.readJSON(MH.legacyKeys.checkins, []);
+        if (!MH.isArray(arr))
+            return [];
+        const checks = arr.filter(x => MH.dateOK(MH.obj(x).date)).map(x => {
+            const v = MH.obj(x), parts = [v.feeling ? ('Sensación: ' + MH.clean(v.feeling, 70)) : null, v.energy == null ? null : 'Energía ' + v.energy + '/5', v.stress == null ? null : 'Estrés ' + v.stress + '/5', v.physical ? MH.clean(v.physical, 90) : null, v.note ? MH.clean(v.note, 150) : null].filter(Boolean);
+            return { id: 'checkin:' + v.date, date: v.date, kind: 'Bienestar', title: 'Cómo me encuentro', detail: parts.join(' · '), status: 'confirmed', origin: 'legacy-checkin', label: 'LAB · Check-in', energy: typeof v.energy === 'number' ? v.energy : null, stress: typeof v.stress === 'number' ? v.stress : null };
+        });
+        const included = new Set(checks.map(x => x.date));
+        const moodRaw = MH.readJSON(MH.legacyKeys.moods, []), moods = MH.isArray(moodRaw) ? moodRaw : [];
+        const moodsOnly = moods.filter(x => MH.dateOK(MH.obj(x).date) && !included.has(MH.obj(x).date) && Number.isInteger(Number(MH.obj(x).mood)) && Number(MH.obj(x).mood) >= 1 && Number(MH.obj(x).mood) <= 5).map(x => {
+            const z = MH.obj(x), feeling = ['Muy bajo', 'Bajo', 'Normal', 'Bien', 'Muy bien'][Number(z.mood) - 1];
+            return { id: 'oldmood:' + z.date, date: z.date, kind: 'Bienestar', title: 'Estado emocional · ' + feeling, detail: 'Registro emocional confirmado', status: 'confirmed', origin: 'legacy-checkin', label: 'LAB · Estado emocional', energy: null, stress: null };
+        });
+        return [...checks, ...moodsOnly];
+    }
+    function clinical() {
+        const symptoms = MH.readJSON(MH.legacyKeys.symptoms, []), measures = MH.readJSON(MH.legacyKeys.observations, []);
+        const s = MH.isArray(symptoms) ? symptoms.filter(x => MH.dateOK(MH.obj(x).date) && MH.obj(x).label).map(x => { const v = MH.obj(x); return { id: 'symptom:' + MH.clean(v.id, 160), date: v.date, kind: 'Síntoma', title: MH.clean(v.label, 150), detail: [v.intensity ? 'Intensidad ' + v.intensity + '/10' : '', MH.clean(v.note, 220)].filter(Boolean).join(' · '), status: 'confirmed', origin: 'legacy-symptom', label: 'LAB · Síntoma declarado' }; }) : [];
+        const m = MH.isArray(measures) ? measures.filter(x => MH.dateOK(MH.obj(x).date) && MH.obj(x).label).map(x => { const v = MH.obj(x); return { id: 'observation:' + MH.clean(v.id, 160), date: v.date, kind: 'Medición', title: MH.clean(v.label, 150), detail: MH.clean(v.value, 30) + ' ' + MH.clean(v.unit, 25), status: 'confirmed', origin: 'legacy-observation', label: 'LAB · Documento revisado' }; }) : [];
+        return [...s, ...m];
+    }
+    async function voiceNotes() {
+        return new Promise(resolve => {
+            if (!('indexedDB' in window)) {
+                resolve({ items: [], count: 0, error: 'IndexedDB no disponible' });
+                return;
+            }
+            let request;
+            try {
+                request = indexedDB.open('myhealth_os_journal_07');
+            }
+            catch {
+                resolve({ items: [], count: 0, error: 'No se pudo abrir el diario de voz' });
+                return;
+            }
+            request.onupgradeneeded = () => { request.transaction?.abort(); }; // Never create or migrate the old database.
+            request.onerror = () => resolve({ items: [], count: 0, error: 'No se puede acceder al diario original' });
+            request.onsuccess = () => {
+                const db = request.result;
+                if (!db.objectStoreNames.contains('dailyNotes')) {
+                    db.close();
+                    resolve({ items: [], count: 0 });
+                    return;
+                }
+                let tx;
+                try {
+                    tx = db.transaction('dailyNotes', 'readonly');
+                }
+                catch {
+                    db.close();
+                    resolve({ items: [], count: 0, error: 'Error leyendo el diario' });
+                    return;
+                }
+                const req = tx.objectStore('dailyNotes').getAll();
+                req.onerror = () => { db.close(); resolve({ items: [], count: 0, error: 'No se pueden leer las notas' }); };
+                req.onsuccess = () => {
+                    const notes = MH.isArray(req.result) ? req.result : [];
+                    const events = [];
+                    for (const n0 of notes) {
+                        const n = MH.obj(n0);
+                        if (!MH.dateOK(n.date))
+                            continue;
+                        const sug = MH.isArray(n.suggestions) ? n.suggestions : [];
+                        for (let i = 0; i < sug.length; i++) {
+                            const e = MH.obj(sug[i]);
+                            if (e.status !== 'confirmed')
+                                continue;
+                            const title = MH.clean(e.title || e.evidence || e.kind, 150);
+                            if (!title)
+                                continue;
+                            events.push({ id: 'voice:' + MH.clean(n.id, 130) + ':' + MH.clean(e.id ?? i, 100), date: n.date, kind: normalized(e.kind), title, detail: MH.clean([e.quantity, e.details].filter(Boolean).join(' · '), 450), status: 'confirmed', origin: 'legacy-journal', label: n.audio ? 'LAB · Voz confirmada' : 'LAB · Nota confirmada' });
+                        }
+                    }
+                    db.close();
+                    resolve({ items: events, count: notes.length });
+                };
+            };
+        });
+    }
+    async function loadLegacy() {
+        const errors = [], m = legacyManual(), c = legacyCheckins(), h = clinical();
+        let voiced;
+        try {
+            voiced = await voiceNotes();
+        }
+        catch {
+            voiced = { items: [], count: 0, error: 'El diario de voz no se pudo leer' };
+        }
+        if (voiced.error)
+            errors.push(voiced.error);
+        const merged = [...MH.localEvents(), ...voiced.items, ...m, ...c, ...h];
+        const keys = new Set(), unique = [];
+        for (const x of merged) {
+            if (x.date > MH.iso() || keys.has(x.id))
+                continue;
+            keys.add(x.id);
+            unique.push(x);
+        }
+        unique.sort((a, b) => b.date.localeCompare(a.date));
+        return { events: unique, errors, imported: { notes: voiced.count, manual: m.length, checkins: c.length, clinical: h.length } };
+    }
+    MH.loadLegacy = loadLegacy;
+})(MH || (MH = {}));
+var MH;
+(function (MH) {
+    function snapshot(events, end = MH.iso(), days = 7) {
+        const start = MH.dayShift(end, -days + 1), previous = MH.dayShift(start, -days);
+        const now = events.filter(x => x.date >= start && x.date <= end), before = events.filter(x => x.date >= previous && x.date < start);
+        return { day: end, start, total: now.length, priorTotal: before.length, daysCovered: new Set(now.map(x => x.date)).size, activity: now.filter(x => x.kind === 'Actividad').length, food: now.filter(x => x.kind === 'Comida').length, wellbeing: now.filter(x => x.kind === 'Bienestar').length, other: now.filter(x => !['Actividad', 'Comida', 'Bienestar'].includes(x.kind)).length };
+    }
+    MH.snapshot = snapshot;
+    function leading(events, ex) {
+        const s = snapshot(events), todayMood = events.some(x => x.date === MH.iso() && x.kind === 'Bienestar');
+        const active = ex.find(x => x.status === 'active' && !x.logs.some(l => l.date === MH.iso()));
+        if (active)
+            return { title: 'Tu siguiente paso está preparado.', description: 'Tienes un programa en marcha: ' + active.title + '. Puedes registrar hoy cómo te ha ido.', why: 'El programa fue confirmado por ti y aún no tiene un seguimiento registrado para hoy.', action: 'experiment', label: 'Registrar seguimiento' };
+        if (!todayMood)
+            return { title: '¿Cómo te encuentras hoy?', description: 'Una respuesta breve ayuda a comprender tu evolución. Solo registra lo que quieras compartir.', why: 'No hay un registro de bienestar confirmado con fecha de hoy. No estoy suponiendo que te encuentres mal.', action: 'capture', label: 'Contarle cómo estoy' };
+        if (!s.total)
+            return { title: 'Tu día, a tu ritmo.', description: 'El Companion está preparado para ayudarte a registrar, consultar o organizar información.', why: 'No encontramos acontecimientos confirmados en el periodo seleccionado.', action: 'capture', label: 'Contar algo' };
+        return { title: 'Tu historia está tomando forma.', description: 'En los últimos siete días hay ' + s.total + ' registros repartidos en ' + s.daysCovered + ' días. Puedes consultar qué ocurrió.', why: 'Recuento de acontecimientos confirmados, sin extrapolar a los días sin registros.', action: 'history', label: 'Explorar mi historia' };
+    }
+    MH.leading = leading;
+    function maybeGoal(text) {
+        const hit = text.match(/(?:mi objetivo es|quiero conseguir|guarda (?:como )?(?:mi )?objetivo(?: de)?|recuerda que quiero)\s*[:,-]?\s*(.{5,180})/i);
+        if (!hit)
+            return null;
+        const title = MH.clean(hit[1], 170);
+        return { type: 'goal', title: 'Actualizar objetivo', description: 'Se cerrará el objetivo anterior, si existe, y se guardará este como activo.', payload: { title } };
+    }
+    function interpret(input, events) {
+        const q = MH.clean(input, 1200);
+        const lower = q.toLocaleLowerCase('es-ES');
+        if (!q)
+            return { heading: 'Escribe lo que necesitas', message: 'Puedes registrar un acontecimiento o hacer una pregunta sobre tus datos.', facts: [], note: 'Esta versión no envía consultas a ningún modelo externo.' };
+        if (/(?:crear?|prepara|inicia|quiero) (?:un )?(?:programa|plan|seguimiento)\b/i.test(q) || /programa (?:de|para)/i.test(q)) {
+            const topic = MH.clean(q.replace(/^.*?(?:programa|plan|seguimiento)\s*(?:de|para)?\s*/i, '').replace(/[.!?]+$/, ''), 110) || 'Mi bienestar';
+            const payload = { title: topic.length > 6 ? topic : 'Mejorar mi recuperación', question: '¿Cómo te has encontrado hoy?', duration: '14' };
+            return { heading: 'Podemos convertirlo en un programa', message: 'Prepararé un seguimiento de 14 días. Podrás registrar un pequeño avance al día y revisar lo observado, sin sacar conclusiones médicas.', facts: [], note: 'El programa no existe todavía: necesita tu aprobación.', action: { type: 'experiment', title: 'Iniciar programa personal', description: 'Duración: 14 días. Una pregunta breve de seguimiento diario. Se guarda localmente.', payload } };
+        }
+        const goal = maybeGoal(q);
+        if (goal)
+            return { heading: 'He preparado el cambio', message: 'Este objetivo puede orientar las próximas consultas y seguimientos.', facts: [], note: 'No se modificará tu perfil anterior hasta que lo confirmes.', action: goal };
+        if (/^(?:hoy estoy|estoy|me siento)\b/i.test(q) && !lower.includes('?')) {
+            const feeling = /estresad|estr[eé]s/.test(lower) ? 'estresado' : /cansad/.test(lower) ? 'cansado' : /energ[ií]a/.test(lower) ? 'con energía' : /sueño|sueno/.test(lower) ? 'con sueño' : /bien|contento/.test(lower) ? 'bien' : '';
+            return { heading: '¿Guardamos cómo te encuentras?', message: 'He preparado un check-in con tu sensación. Puedes añadir o cambiar energía y estrés sin tener que rellenar todos los campos.', facts: [], note: 'No se guardará hasta que lo confirmes.', action: { type: 'checkin', title: 'Registrar bienestar', description: 'Declaración personal, no medición clínica.', payload: { feeling, energy: '', stress: '', note: q } } };
+        }
+        if (/^(?:registra|guarda|anota|apunta|añade|he hecho|hoy he|hoy estoy|estoy|me siento|tengo)\b/i.test(q) && !lower.includes('?')) {
+            return { heading: 'Acontecimiento preparado', message: 'He preparado un registro editable. La categoría será orientativa y podrás corregirla más adelante.', facts: [], note: 'La frase se conservará como la declaraste. No se calcularán métricas que no hayas proporcionado.', action: { type: 'event', title: 'Guardar en mi historia', description: 'Fecha: hoy · Origen: declaración manual · Pendiente de confirmar', payload: { title: q, detail: '' } } };
+        }
+        const activity = /entren|crossfit|actividad|camina|deporte|ejercicio|running/i.test(q), wellness = /cansad|energ[ií]a|[áa]nimo|estr[eé]s|bienestar|recuperaci[oó]n|dorm/i.test(q), food = /com[ií]d|desayun|cen[ae]|nutrici[oó]n|prote[ií]n/i.test(q), clinic = /s[ií]ntoma|dolor|anal[ií]tica|migra[ñn]|medici[oó]n/i.test(q);
+        const wantsWeek = /semana|[úu]ltimos? siete|7 d[ií]as/i.test(q);
+        const start = wantsWeek ? MH.dayShift(MH.iso(), -6) : MH.dayShift(MH.iso(), -29);
+        const period = events.filter(x => x.date >= start && x.date <= MH.iso());
+        const kinds = new Set();
+        if (activity)
+            kinds.add('Actividad');
+        if (wellness)
+            kinds.add('Bienestar');
+        if (food)
+            kinds.add('Comida');
+        if (clinic) {
+            kinds.add('Síntoma');
+            kinds.add('Medición');
+        }
+        const picked = kinds.size ? period.filter(x => kinds.has(x.kind)) : period;
+        const days = new Set(picked.map(x => x.date)).size;
+        const label = wantsWeek ? '7 días' : '30 días';
+        if (!picked.length)
+            return { heading: 'No tengo registros suficientes', message: 'No encuentro registros confirmados para esa consulta durante los últimos ' + label + '. Puedes probar otra pregunta o añadir información.', facts: [], note: 'La ausencia de registros no significa que no hayas realizado esas actividades o tenido esas sensaciones.' };
+        const byKind = {};
+        for (const x of picked)
+            byKind[x.kind] = (byKind[x.kind] || 0) + 1;
+        const describe = Object.entries(byKind).map(([k, n]) => `${n} de ${k.toLowerCase()}`).join(' · ');
+        return { heading: 'Esto aparece en tu historia', message: `En los últimos ${label} hay ${picked.length} registros confirmados repartidos en ${days} días: ${describe}. Te enseño las fuentes para que puedas revisarlas.`, facts: picked.slice(0, 8), note: 'Solo describo registros confirmados. No estoy deduciendo causas, diagnósticos ni actividad en días sin datos.' };
+    }
+    MH.interpret = interpret;
+})(MH || (MH = {}));
+var MH;
+(function (MH) {
+    let archive = { events: [], errors: [], imported: { notes: 0, manual: 0, checkins: 0, clinical: 0 } }, view = 'home', messages = [], pending = null;
+    let showWhy = false, historyFilter = 'Todas', loading = true, statusText = '';
+    const root = () => document.getElementById('app');
+    const icons = { Actividad: '↗', Comida: '◌', Bienestar: '♡', Sueño: '☾', Síntoma: '✳', Medición: '≈', Otro: '•' };
+    const filtered = (events, filter) => filter === 'Todas' ? events : events.filter(x => x.kind === filter);
+    function escValue(x) { return MH.esc(x); }
+    function formatOrigin(e) { return e.label || e.origin; }
+    function eventCard(e) { return `<article class="evidence-item"><div class="kind-icon" aria-hidden="true">${icons[e.kind] || '•'}</div><div class="fact-copy"><strong>${MH.esc(e.title)}</strong><p>${MH.esc(e.detail || e.kind)}</p><span>${MH.displayDate(e.date)} · ${MH.esc(formatOrigin(e))}</span></div></article>`; }
+    function summary() { const s = MH.snapshot(archive.events); return `<section class="factline" aria-label="Cobertura de información"><div><strong>${s.activity}</strong><span>actividades</span></div><div><strong>${s.wellbeing}</strong><span>bienestar</span></div><div><strong>${s.daysCovered}<small>/7</small></strong><span>días con registros</span></div></section>`; }
+    const brand = `<div class="brand"><span class="brand-sign">m<span class="bright-dot">.</span></span><span>myhealth <em>/os</em></span></div>`;
+    function navBtn(v, label, icon) { return `<button type="button" class="navbtn ${view === v ? 'active' : ''}" data-view="${v}" aria-current="${view === v ? 'page' : 'false'}"><span>${icon}</span>${label}</button>`; }
+    function header() { return `<header class="topbar">${brand}<div class="top-actions"><span class="preview-chip"><span></span> 1.0 / alpha</span><button class="round-icon" data-view="privacy" title="Privacidad y datos" aria-label="Privacidad y datos">◎</button></div></header>`; }
+    function sidebar() { return `<aside class="side"><div class="side-head">${brand}<p>INTELLIGENCE SYSTEM</p></div><nav aria-label="Secciones">${navBtn('home', 'Companion', '✳')}${navBtn('history', 'Mi historia', '◷')}${navBtn('programs', 'Mis programas', '◎')}${navBtn('privacy', 'Datos y privacidad', '▧')}</nav><div class="side-bottom"><div class="status-live"><span class="live-circle"></span><b>Tu información, bajo control</b></div><p>Esta versión lee el LAB anterior. Los nuevos datos se guardan aparte.</p><a href="lab-018.html?v=018" target="_self">Volver a LAB 0.18 ↗</a></div></aside>`; }
+    function mobileNav() { return `<nav class="mobile-nav" aria-label="Navegación móvil">${navBtn('home', 'Companion', '✳')}${navBtn('history', 'Historia', '◷')}${navBtn('programs', 'Programas', '◎')}${navBtn('privacy', 'Datos', '▧')}</nav>`; }
+    function focus() { const f = MH.leading(archive.events, MH.localExperiments()); return `<section class="focus-card"><div class="focus-top"><span>EL SIGUIENTE PASO</span><span class="focus-indicator">01 / 01</span></div><h2>${MH.esc(f.title)}</h2><p>${MH.esc(f.description)}</p><div class="focus-actions"><button class="dark-button" data-focus-action="${f.action}">${MH.esc(f.label)} <span>↗</span></button><button class="why-button" data-why aria-expanded="${showWhy}">¿Por qué aparece? <span>↗</span></button></div>${showWhy ? `<div class="focus-reason">${MH.esc(f.why)}</div>` : ''}</section>`; }
+    function chatMessage(m) {
+        if (m.role === 'user')
+            return `<div class="bubble-row right"><div class="bubble user">${MH.esc(m.text)}</div></div>`;
+        let html = `<div class="bubble-row"><span class="assistant-avatar">✳</span><div class="bubble assistant">${m.result ? `<strong>${MH.esc(m.result.heading)}</strong>` : ''}<p>${MH.esc(m.text)}</p>`;
+        if (m.result) {
+            if (m.result.facts.length)
+                html += `<details class="sources"><summary>Ver ${m.result.facts.length} registros utilizados <span>↘</span></summary>${m.result.facts.map(eventCard).join('')}</details>`;
+            html += `<small class="explain">${MH.esc(m.result.note)}</small>`;
+        }
+        return html + '</div></div>';
+    }
+    function pendingCard() { if (!pending)
+        return ''; const a = pending; const name = a.type === 'event' ? 'Acontecimiento' : a.type === 'goal' ? 'Objetivo' : a.type === 'experiment' ? 'Programa' : a.type === 'checkin' ? 'Bienestar' : 'Seguimiento'; return `<section class="approval" aria-label="Confirmación requerida"><div class="approval-header"><span>ACCIÓN PROPUESTA · ${name.toUpperCase()}</span><b>Pendiente de tu decisión</b></div><h3>${MH.esc(a.title)}</h3><p>${MH.esc(a.description)}</p>${a.type === 'event' ? `<label>Descripción a guardar<textarea id="approve-title" rows="3">${MH.esc(a.payload.title)}</textarea></label><label>Categoría<select id="approve-kind">${['Actividad', 'Comida', 'Bienestar', 'Sueño', 'Síntoma', 'Medición', 'Otro'].map(k => `<option value="${k}" ${k === MH.classify((a.payload.title || '') + ' ' + (a.payload.detail || '')) ? 'selected' : ''}>${k}</option>`).join('')}</select></label><label>Fecha<input id="approve-date" type="date" max="${MH.iso()}" value="${MH.iso()}"></label>` : ''}${a.type === 'checkin' ? `<label>¿Cómo te encuentras? <span class="optional">Opcional</span><select id="approve-feeling"><option value="">No indicar</option>${['bien', 'cansado', 'estresado', 'con energía', 'con sueño', 'normal'].map(k => `<option value="${k}" ${k === a.payload.feeling ? 'selected' : ''}>${k}</option>`).join('')}</select></label><label>Energía (opcional)<select id="approve-energy"><option value="">Sin indicar</option>${[1, 2, 3, 4, 5].map(n => `<option value="${n}">${n}/5</option>`).join('')}</select></label><label>Estrés (opcional)<select id="approve-stress"><option value="">Sin indicar</option>${[1, 2, 3, 4, 5].map(n => `<option value="${n}">${n}/5</option>`).join('')}</select></label><label>Nota (opcional)<textarea rows="2" id="approve-note">${MH.esc(a.payload.note || '')}</textarea></label>` : ''}${a.type === 'goal' ? `<label>Objetivo a guardar<input id="approve-title" value="${MH.esc(a.payload.title)}" maxlength="170"></label>` : ''}${a.type === 'experiment' ? `<label>Título del programa<input id="approve-title" value="${MH.esc(a.payload.title)}" maxlength="170"></label><label>Pregunta de seguimiento<input id="approve-question" value="${MH.esc(a.payload.question)}" maxlength="190"></label><label>Duración<select id="approve-duration"><option value="14">14 días</option><option value="28">28 días</option></select></label>` : ''}${a.type === 'log' ? `<label>Cómo me ha ido<textarea id="approve-title" rows="3">${MH.esc(a.payload.note)}</textarea></label>` : ''}<div class="approval-actions"><button class="dark-button" data-confirm>Aprobar y guardar →</button><button class="neutral-button" data-reject>Descartar</button></div></section>`; }
+    function composer() { return `<form id="composer" class="composer"><label class="sr-only" for="prompt">Escribe algo a tu Companion</label><textarea id="prompt" rows="1" maxlength="1200" placeholder="Pregunta, cuenta o pide una acción…" autocomplete="off" required></textarea><button type="submit" aria-label="Enviar" title="Enviar">↗</button></form><p class="composer-note">Modo local verificable: consulta los registros sin enviar información a una IA externa.</p>`; }
+    function home() { let goals = MH.localGoals().filter(g => g.status === 'active'); return `<div class="main-wrap"><div class="hero-intro"><div class="eyebrow">UN ESPACIO PARA LO IMPORTANTE <span>·</span> ${MH.displayDate(MH.iso())}</div><h1>No es un dashboard.<br/><em>Es tu salud en diálogo.</em></h1><p>Cuéntame algo, pregúntame por tu historia o transforma una intención en un paso concreto.</p></div>${focus()}<div class="dialogue-head"><div><span class="eyebrow">TU COMPANION</span><h2>¿Qué necesitas?</h2></div><span class="local-pill">◉ Datos locales</span></div><section id="dialogue" class="dialogue" aria-label="Conversación">${messages.length ? messages.map(chatMessage).join('') : `<div class="welcome-copy"><span class="assistant-avatar">✳</span><div><strong>Estoy aquí para conectar lo que sabes de tu salud.</strong><p>${archive.events.length ? 'He encontrado ' + archive.events.length + ' acontecimientos confirmados de distintas versiones. Puedo responder con sus fuentes.' : 'Todavía no encuentro acontecimientos confirmados. Podemos empezar a registrar tu día.'}</p></div></div>`}${pendingCard()}</section><div class="suggestions"><button data-suggest="¿Cómo me ha ido esta semana?">Mi semana ↗</button><button data-suggest="¿Qué entrenamientos y registros de energía tengo?">Actividad y energía ↗</button><button data-suggest="Crear un programa de recuperación">Mi próximo paso ↗</button></div>${composer()}${goals.length ? `<p class="goal-chip"><span>OBJETIVO ACTIVO</span> ${MH.esc(goals[0].title)}</p>` : ''}</div>`; }
+    function history() {
+        const s = MH.snapshot(archive.events);
+        const categories = ['Todas', 'Actividad', 'Comida', 'Bienestar', 'Sueño', 'Síntoma', 'Medición', 'Otro'];
+        let entries = filtered(archive.events, historyFilter).slice(0, 120);
+        return `<div class="main-wrap content"><span class="eyebrow">HISTORIA · CON PROCEDENCIA</span><h1>Lo que has<br/><em>registrado.</em></h1><p class="lead">Reúno acontecimientos confirmados de los laboratorios anteriores y de esta versión, sin modificar los originales.</p>${summary()}<div class="section-row"><h2>Tus acontecimientos</h2><span>${archive.events.length} registros</span></div><div class="category-scroll">${categories.map(x => `<button class="category ${historyFilter === x ? 'selected' : ''}" data-filter="${x}">${x}</button>`).join('')}</div>${entries.length ? `<section class="history-list">${entries.map(eventCard).join('')}</section>` : `<div class="empty-view">No hay registros confirmados para este filtro.</div>`}<p class="quiet">En los últimos siete días: ${s.total} registros distribuidos en ${s.daysCovered} días. Un día sin registros no equivale a un día sin actividad.</p></div>`;
+    }
+    function programs() {
+        const ex = MH.localExperiments().slice().reverse();
+        const priorRaw = MH.readJSON(MH.legacyKeys.programs, []), legacyPrograms = MH.isArray(priorRaw) ? priorRaw : [];
+        const priorPlanRaw = MH.readJSON(MH.legacyKeys.plans, []), legacyPlans = MH.isArray(priorPlanRaw) ? priorPlanRaw : [];
+        const previous = [...legacyPrograms.filter(x => MH.obj(x).title).map(x => ({ title: MH.clean(MH.obj(x).title, 140), description: MH.clean(MH.obj(x).question, 240), status: MH.clean(MH.obj(x).status, 50), source: 'Health Lab · 0.17' })), ...legacyPlans.filter(x => MH.obj(x).title).map(x => ({ title: MH.clean(MH.obj(x).title, 140), description: MH.clean(MH.obj(x).action, 240), status: MH.clean(MH.obj(x).status, 50), source: 'Mis planes · 0.16' }))].slice(-25);
+        return `<div class="main-wrap content"><span class="eyebrow">INTENCIONES QUE SE CONVIERTEN EN PRÁCTICA</span><h1>Pequeños planes.<br/><em>Mejor contexto.</em></h1><p class="lead">Programas personales de observación, no experimentos clínicos ni diagnósticos. Los avances son opcionales y tú decides qué registrar.</p><button class="dark-button" data-start-plan>Crear programa de 14 días ↗</button>${ex.length ? ex.map(x => `<article class="plan-card"><div class="plan-head"><span>${x.status === 'active' ? 'EN CURSO' : 'FINALIZADO'}</span><span>${x.duration} DÍAS</span></div><h2>${MH.esc(x.title)}</h2><p>${MH.esc(x.question)}</p><div class="progress-line"><span style="width:${Math.min(100, Math.round(x.logs.length / x.duration * 100))}%"></span></div><div class="plan-footer"><span>${x.logs.length} días con seguimiento registrado · comenzó ${MH.displayDate(x.start)}</span>${x.status === 'active' ? `<button data-log="${MH.esc(x.id)}">Registrar hoy →</button>` : ''}</div>${x.logs.length ? `<details><summary>Ver respuestas registradas</summary>${x.logs.slice(-5).map(l => `<p class="plan-log">${MH.displayDate(l.date)} · ${MH.esc(l.note)}</p>`).join('')}</details>` : ''}</article>`).join('') : `<div class="empty-view">Aún no has creado programas en 1.0. Puedes comenzar aquí o pedírselo al Companion.</div>`}${previous.length ? `<div class="section-row"><h2>Programas anteriores</h2><span>Solo lectura</span></div><p class="quiet">Permanecen en LAB 0.18 y no pueden editarse desde esta alpha.</p>${previous.map(x => `<article class="legacy-plan"><div><span>${MH.esc(x.source)} · ${MH.esc(x.status)}</span><strong>${MH.esc(x.title)}</strong><p>${MH.esc(x.description)}</p></div></article>`).join('')}<a class="return-link" href="lab-018.html?v=018">Abrir programas en LAB 0.18 ↗</a>` : ''}</div>`;
+    }
+    function privacy() { const i = archive.imported; return `<div class="main-wrap content"><span class="eyebrow">PRIVACIDAD Y CONTROL</span><h1>Tus datos.<br/><em>Tus decisiones.</em></h1><p class="lead">Esta versión funciona sin enviar tus consultas ni información personal a un servidor de IA. Lee el historial anterior en modo de solo lectura.</p><div class="privacy-grid"><article><span>FUENTES ANTERIORES</span><h3>${archive.events.filter(e => e.origin !== 'v1-local').length}</h3><p>Registros confirmados accesibles desde LAB 0.18 y versiones previas.</p></article><article><span>NUEVOS REGISTROS 1.0</span><h3>${MH.localEvents().length}</h3><p>Guardados en una zona independiente del navegador.</p></article><article><span>NOTAS DEL DIARIO ORIGINAL</span><h3>${i.notes}</h3><p>Leídas desde IndexedDB sin alterar la base anterior.</p></article><article><span>ENVÍOS A SERVIDORES</span><h3>0</h3><p>Esta alpha no conecta con Workers, ni utiliza servicios de IA externos.</p></article></div><div class="setting-card"><h2>Exportación y control</h2><p>Puedes exportar los registros, objetivos y programas creados en 1.0. El archivo no está cifrado: guárdalo de forma privada, nunca en GitHub.</p><button class="dark-button" data-export>Exportar mis datos nuevos ↓</button><button class="outline-button" data-clear>Eliminar únicamente los datos nuevos de 1.0</button><p class="quiet">La eliminación nunca toca las claves de LAB 0.18 ni los audios existentes.</p></div>${archive.errors.length ? `<div class="warning"><strong>Lectura parcial</strong><p>${archive.errors.map(MH.esc).join(' · ')}</p></div>` : ''}<a class="return-link" href="lab-018.html?v=018">Abrir el laboratorio anterior ↗</a></div>`; }
+    function render() { document.title = 'MyHealth OS · 1.0 Alpha'; document.documentElement.lang = 'es'; root().innerHTML = `<div class="app-frame">${sidebar()}<div class="main-panel">${header()}<main id="content">${loading ? '<div class="loading">Preparando tu contexto…</div>' : view === 'home' ? home() : view === 'history' ? history() : view === 'programs' ? programs() : privacy()}</main></div>${mobileNav()}</div><div id="notification" role="status" aria-live="polite">${MH.esc(statusText)}</div>`; if (statusText)
+        setTimeout(() => { const n = document.getElementById('notification'); if (n)
+            n.textContent = ''; }, 3000); }
+    function notice(x) { statusText = x; render(); }
+    async function refresh() { archive = await MH.loadLegacy(); loading = false; render(); }
+    function send(input) { messages.push({ role: 'user', text: input }); const answer = MH.interpret(input, archive.events); messages.push({ role: 'assistant', text: answer.message, result: answer }); pending = answer.action || null; render(); document.querySelector('#dialogue')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+    function confirm() {
+        if (!pending)
+            return;
+        const a = pending;
+        const edit = document.getElementById('approve-title');
+        if (edit)
+            a.payload[a.type === 'event' ? 'title' : a.type === 'experiment' ? 'title' : a.type === 'goal' ? 'title' : 'note'] = edit.value.trim();
+        if (a.type === 'event') {
+            a.payload.kind = document.getElementById('approve-kind')?.value || '';
+            a.payload.date = document.getElementById('approve-date')?.value || MH.iso();
+        }
+        if (a.type === 'checkin') {
+            a.payload.feeling = document.getElementById('approve-feeling')?.value || '';
+            a.payload.energy = document.getElementById('approve-energy')?.value || '';
+            a.payload.stress = document.getElementById('approve-stress')?.value || '';
+            a.payload.note = document.getElementById('approve-note')?.value || '';
+        }
+        if (a.type === 'experiment') {
+            a.payload.question = document.getElementById('approve-question')?.value.trim() || '';
+            a.payload.duration = document.getElementById('approve-duration')?.value || '14';
+        }
+        try {
+            if (a.type === 'event')
+                MH.addEvent(a.payload);
+            if (a.type === 'checkin')
+                MH.addCheckin(a.payload);
+            if (a.type === 'goal')
+                MH.setGoal(a.payload);
+            if (a.type === 'experiment')
+                MH.startExperiment(a.payload);
+            if (a.type === 'log')
+                MH.logExperiment(a.payload);
+            pending = null;
+            messages.push({ role: 'assistant', text: 'Acción confirmada y guardada solo en este navegador. Ya se puede consultar en tu historia o en tus programas.' });
+            refresh().then(() => notice('Guardado con tu confirmación.'));
+        }
+        catch (e) {
+            notice(e instanceof Error ? e.message : 'No se pudo guardar.');
+        }
+    }
+    function openCheckin() { view = 'home'; messages = []; pending = { type: 'checkin', title: 'Registrar bienestar', description: 'Indica solo lo que quieras. Ningún campo aislado es obligatorio.', payload: { feeling: '', energy: '', stress: '', note: '' } }; render(); }
+    function openCapture() { view = 'home'; messages = []; pending = { type: 'event', title: 'Nuevo acontecimiento', description: 'Escribe un hecho concreto. Solo se guardará si confirmas.', payload: { title: '', detail: '' } }; render(); document.getElementById('approve-title')?.focus(); }
+    function startPlan() { view = 'home'; messages = []; pending = { type: 'experiment', title: 'Nuevo programa personal', description: 'Programa de observación con respuesta diaria opcional.', payload: { title: 'Mejorar mi recuperación', question: '¿Cómo me encuentro hoy?', duration: '14' } }; render(); }
+    function askLog(id) { view = 'home'; messages = []; const exp = MH.localExperiments().find(x => x.id === id); if (!exp)
+        return; pending = { type: 'log', title: 'Registrar seguimiento', description: exp.title + ' · hoy', payload: { id, note: '' } }; render(); }
+    function attachEvents() {
+        document.addEventListener('click', async (e) => {
+            const target = e.target;
+            if (!target)
+                return;
+            const btn = target.closest('[data-view],[data-why],[data-focus-action],[data-suggest],[data-filter],[data-confirm],[data-reject],[data-start-plan],[data-log],[data-export],[data-clear]');
+            if (!btn)
+                return;
+            e.preventDefault();
+            if (btn.dataset.view) {
+                view = btn.dataset.view;
+                pending = null;
+                showWhy = false;
+                render();
+                window.scrollTo({ top: 0, behavior: 'instant' });
+                return;
+            }
+            if (btn.hasAttribute('data-why')) {
+                showWhy = !showWhy;
+                render();
+                return;
+            }
+            if (btn.dataset.focusAction) {
+                const a = btn.dataset.focusAction;
+                if (a === 'capture')
+                    openCheckin();
+                else if (a === 'experiment') {
+                    const exp = MH.localExperiments().find(x => x.status === 'active' && !x.logs.some(l => l.date === MH.iso()));
+                    if (exp)
+                        askLog(exp.id);
+                    else
+                        startPlan();
+                }
+                else {
+                    view = 'history';
+                    render();
+                }
+                return;
+            }
+            if (btn.dataset.suggest) {
+                view = 'home';
+                send(btn.dataset.suggest);
+                return;
+            }
+            if (btn.dataset.filter) {
+                historyFilter = btn.dataset.filter;
+                render();
+                return;
+            }
+            if (btn.hasAttribute('data-confirm')) {
+                confirm();
+                return;
+            }
+            if (btn.hasAttribute('data-reject')) {
+                pending = null;
+                notice('Propuesta descartada. No se ha guardado nada.');
+                return;
+            }
+            if (btn.hasAttribute('data-start-plan')) {
+                startPlan();
+                return;
+            }
+            if (btn.dataset.log) {
+                askLog(btn.dataset.log);
+                return;
+            }
+            if (btn.hasAttribute('data-export')) {
+                MH.exportNewData();
+                return;
+            }
+            if (btn.hasAttribute('data-clear')) {
+                if (confirmDialog('¿Eliminar solo los registros, objetivos y programas creados en MyHealth OS 1.0? Los datos de LAB 0.18 seguirán intactos.')) {
+                    MH.clearOnlyV1();
+                    messages = [];
+                    pending = null;
+                    await refresh();
+                    notice('Se han eliminado exclusivamente los datos nuevos de 1.0.');
+                }
+                return;
+            }
+        });
+        document.addEventListener('submit', e => { if (e.target.id !== 'composer')
+            return; e.preventDefault(); const input = document.getElementById('prompt'); if (input?.value.trim())
+            send(input.value.trim()); });
+        document.addEventListener('keydown', e => { const el = e.target; if (el.id === 'prompt' && e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            document.getElementById('composer')?.requestSubmit();
+        } });
+    }
+    const confirmDialog = (msg) => window.confirm(msg);
+    async function start() { attachEvents(); render(); await refresh(); }
+    MH.start = start;
+})(MH || (MH = {}));
+window.addEventListener('DOMContentLoaded', () => void MH.start());
+</script></body></html>
